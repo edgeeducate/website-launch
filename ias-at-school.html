@@ -730,6 +730,25 @@
     }
   }
 
+  // FAQ Accordion Toggle
+  function toggleFaq(button) {
+    const wrapper = button.nextElementSibling;
+    const item = button.parentElement;
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item').forEach(el => {
+      el.classList.remove('open');
+      const w = el.querySelector('.faq-a-wrapper');
+      if (w) w.style.maxHeight = '0px';
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      if (wrapper) wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+    } else {
+      if (wrapper) wrapper.style.maxHeight = '0px';
+    }
+  }
   // Mobile Nav mechanics
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
